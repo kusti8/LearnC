@@ -15,7 +15,7 @@ echo "$1 -o $output"
 g++ $1 -o $output
 
 echo "Finished"
-if [ "$2" -eq "-r" ]
+if [ "$2" == "-r" ]
 then
 	echo "Running"
 	./$output
