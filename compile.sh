@@ -9,6 +9,7 @@ fi
 
 
 #echo "Executing g++ with the following options: g++ $2 -o $output"
+#Test
 filename=$1
 output=${filename:0:-3}
 echo "$1 -o $output"
