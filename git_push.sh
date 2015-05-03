@@ -12,3 +12,4 @@ then
 fi
 git push
 echo "Finished!"
+
