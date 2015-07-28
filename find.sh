@@ -1,5 +1,5 @@
 #!/bin/bash
-
+ls -lah
 for f in ./*
 do
   if [[ "$f" == "*.cc" ]]; then
