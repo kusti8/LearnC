@@ -7,3 +7,5 @@ compiler:
 os:
   - linux
   - osx
+script:
+  - ./find.sh
