@@ -9,13 +9,9 @@ install:
 addons:
   apt:
     sources:
-      - deadsnakes
       - ubuntu-toolchain-r-test
-
-addons:
-  apt:
     packages:
-      - g++-5
+      - g++-4.8
 script:
   - chmod +x find.sh
   - ./find.sh
