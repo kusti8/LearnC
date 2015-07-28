@@ -8,4 +8,5 @@ os:
   - linux
   - osx
 script:
+  - chmod +x find.sh
   - ./find.sh
