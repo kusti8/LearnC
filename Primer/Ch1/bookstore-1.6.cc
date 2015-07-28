@@ -8,7 +8,7 @@ int main()
 		Sales_item trans; //variable to hold the running sum
 		// read and process the remaining transactions
 		while (std::cin >> trans) {
-			// if we're still processing the same book
+			// if we're still processing the same bookp 
 			if (total.isbn() == trans.isbn())
 				total += trans; // update the running total
 			else {
