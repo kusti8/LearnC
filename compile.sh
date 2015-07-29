@@ -14,10 +14,10 @@ filename=$1
 output=${filename:0:-3}
 echo "$1 -o $output"
 g++-4.8 -std=c++11 $1 -o $output
-echo $?
-if [ $? -ne 0 ]; then
+goutput=$?
+if [ $goutput -ne 0 ]; then
 	echo "Yes, should exit"
-	exit "$?"
+	exit $goutput
 fi
 echo "Finished"
 if [ "$2" == "-r" ]
