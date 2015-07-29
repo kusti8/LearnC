@@ -16,6 +16,7 @@ echo "$1 -o $output"
 g++-4.8 -std=c++11 $1 -o $output
 if [ "$?" != 0 ]; then
 	exit "$?"
+fi
 echo "Finished"
 if [ "$2" == "-r" ]
 then
