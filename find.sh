@@ -1,4 +1,4 @@
 #!/bin/bash
 ls -lah
-find . -name '*.cc'
-find . -name '*.cc' | xargs -n 1 ./compile.sh
+find . -name '*.cpp'
+find . -name '*.cpp' | xargs -n 1 ./compile.sh
