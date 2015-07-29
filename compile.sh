@@ -16,6 +16,7 @@ echo "$1 -o $output"
 g++-4.8 -std=c++11 $1 -o $output
 echo $?
 if [ "$?" != 0 ]; then
+	echo "Yes, should exit"
 	exit "$?"
 fi
 echo "Finished"
