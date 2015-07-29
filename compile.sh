@@ -14,6 +14,7 @@ filename=$1
 output=${filename:0:-3}
 echo "$1 -o $output"
 g++-4.8 -std=c++11 $1 -o $output
+echo $?
 if [ "$?" != 0 ]; then
 	exit "$?"
 fi
