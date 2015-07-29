@@ -4,7 +4,7 @@ compiler:
   - g++
 
 install:
-- export CXX="g++-5"
+- export CXX="g++-4.8"
 - chmod +x find.sh
 
 addons:
