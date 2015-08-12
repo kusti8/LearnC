@@ -11,8 +11,8 @@ fi
 #echo "Executing g++ with the following options: g++ $2 -o $output"
 #Test
 filename=$1
-output="${filename:0:-4}.o"
-echo "$1 -o $output.out"
+output="${filename:0:-4}.out"
+echo "$1 -o $output"
 g++-4.8 -std=c++11 $1 -o $output
 goutput=$?
 if [ $goutput -ne 0 ]; then
