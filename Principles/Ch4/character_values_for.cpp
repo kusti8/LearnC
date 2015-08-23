@@ -8,4 +8,5 @@ int main() {
     for (int i = 0; i<10; ++i) {
         cout << char('0'+i) << '\t' << '0'+i << '\n';
     }
+    return 0;
 }
