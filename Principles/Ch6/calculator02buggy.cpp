@@ -21,12 +21,12 @@
 
 //------------------------------------------------------------------------------
 
-lass Token {
+class Token {
 public:
     char kind;        // what kind of token
-    double value;     // for numbers: a value 
+    double value;     // for numbers: a value
     Token(char ch)    // make a Token from a char
-        :kind(ch), value(0) { }    
+        :kind(ch), value(0) { }
     Token(char ch, double val)     // make a Token from a char and a double
         :kind(ch), value(val) { }
 };
@@ -34,7 +34,7 @@ public:
 //------------------------------------------------------------------------------
 
 class Token_stream {
-public: 
+public:
     Token_stream();   // make a Token_stream that reads from cin
     Token get();      // get a Token (get() is defined elsewhere)
     void putback(Token t);    // put a Token back
@@ -63,13 +63,13 @@ void Token_stream::putback(Token t)
 
 //------------------------------------------------------------------------------
 
-Token get()
+Token Token_stream::get()
 {
     if (full) {       // do we already have a Token ready?
         // remove token from buffer
         full=false;
         return buffer;
-    } 
+    }
 
     char ch;
     cin >> ch;    // note that >> skips whitespace (space, newline, tab, etc.)
@@ -77,12 +77,12 @@ Token get()
     switch (ch) {
     case ';':    // for "print"
     case 'q':    // for "quit"
-    case '(': case ')': case '+': case '-': case '*': case '/': 
+    case '(': case ')': case '+': case '-': case '*': case '/':
         return Token(ch);        // let each character represent itself
     case '.':
     case '0': case '1': case '2': case '3': case '4':
     case '5': case '6': case '7': case '9':
-        {    
+        {
             cin.putback(ch);         // put digit back into the input stream
             double val;
             cin >> val;              // read a floating-point number
@@ -95,7 +95,7 @@ Token get()
 
 //------------------------------------------------------------------------------
 
-Token_stream ts;        // provides get() and putback() 
+Token_stream ts;        // provides get() and putback()
 
 //------------------------------------------------------------------------------
 
@@ -109,10 +109,10 @@ double primary()
     Token t = ts.get();
     switch (t.kind) {
     case '(':    // handle '(' expression ')'
-        {    
+        {
             double d = expression();
             t = ts.get();
-            if (t.kind != ')') error("')' expected);
+            if (t.kind != ')') error("')' expected");
             return d;
         }
     case '8':            // we use '8' to represent a number
@@ -135,15 +135,16 @@ double term()
         case '*':
             left *= primary();
             t = ts.get();
+            break;
         case '/':
-            {    
+            {
                 double d = primary();
                 if (d == 0) error("divide by zero");
-                left /= d; 
+                left /= d;
                 t = ts.get();
                 break;
             }
-        default: 
+        default:
             ts.putback(t);     // put t back into the token stream
             return left;
         }
@@ -155,10 +156,10 @@ double term()
 // deal with + and -
 double expression()
 {
-    double left = term(;      // read and evaluate a Term
+    double left = term();      // read and evaluate a Term
     Token t = ts.get();        // get the next token from token stream
 
-    while(true) {    
+    while(true) {
         switch(t.kind) {
         case '+':
             left += term();    // evaluate Term and add
@@ -168,7 +169,7 @@ double expression()
             left += term();    // evaluate Term and subtract
             t = ts.get();
             break;
-        default: 
+        default:
             ts.putback(t);     // put t back into the token stream
             return left;       // finally: no more + or -: return the answer
         }
@@ -180,25 +181,26 @@ double expression()
 int main()
 try
 {
+    double val = 0;
     while (cin) {
         Token t = ts.get();
-
         if (t.kind == 'q') break; // 'q' for quit
         if (t.kind == ';')        // ';' for "print now"
             cout << "=" << val << '\n';
-        else
+        else {
             ts.putback(t);
-        val = expression();
+            val = expression();
+        }
     }
-	keep_window_open();
+	//keep_window_open();
 }
 catch (exception& e) {
-    cerr << "error: " << e.what() << '\n'; 
+    cerr << "error: " << e.what() << '\n';
 	keep_window_open();
     return 1;
 }
 catch (...) {
-    cerr << "Oops: unknown exception!\n"; 
+    cerr << "Oops: unknown exception!\n";
 	keep_window_open();
     return 2;
 }
