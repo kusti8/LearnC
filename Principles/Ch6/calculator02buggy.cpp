@@ -120,6 +120,7 @@ double primary()
     default:
         error("primary expected");
     }
+    return 0.0;
 }
 
 //------------------------------------------------------------------------------
@@ -166,7 +167,7 @@ double expression()
             t = ts.get();
             break;
         case '-':
-            left += term();    // evaluate Term and subtract
+            left -= term();    // evaluate Term and subtract
             t = ts.get();
             break;
         default:
