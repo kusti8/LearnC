@@ -15,3 +15,10 @@ addons:
       - g++-4.8
 script:
   - ./find.sh
+
+matrix:
+  allow_failures:
+    - os: osx
+os:
+  - linux
+  - osx
