@@ -17,6 +17,6 @@ int main() {
   x = x + 1;
 
   int z;
-  std::cout << z << std::endl;
+  std::cout << z << std::endl; // Unexpected results
   return 0;
 }
